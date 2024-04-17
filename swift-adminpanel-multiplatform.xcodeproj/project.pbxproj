@@ -16,6 +16,9 @@
 		5D343B792BB1732200A3ED1A /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = 5D343B782BB1732200A3ED1A /* Realtime */; };
 		5D343B7B2BB1732200A3ED1A /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = 5D343B7A2BB1732200A3ED1A /* Storage */; };
 		5D343B7D2BB1732200A3ED1A /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 5D343B7C2BB1732200A3ED1A /* Supabase */; };
+		5DB11F902BCC3A5500594197 /* SupabaseConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB11F8F2BCC3A5500594197 /* SupabaseConfig.swift */; };
+		5DB11F932BCC3A9300594197 /* FormCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB11F922BCC3A9300594197 /* FormCategoriesView.swift */; };
+		5DB11F962BCCA58D00594197 /* SupabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB11F952BCCA58D00594197 /* SupabaseService.swift */; };
 		5DB4CEFF2BA6E605007A7157 /* swift_adminpanel_multiplatformApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB4CEFE2BA6E605007A7157 /* swift_adminpanel_multiplatformApp.swift */; };
 		5DB4CF012BA6E605007A7157 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB4CF002BA6E605007A7157 /* ContentView.swift */; };
 		5DB4CF032BA6E605007A7157 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB4CF022BA6E605007A7157 /* Item.swift */; };
@@ -62,6 +65,9 @@
 		5D343B6B2BB16FB200A3ED1A /* data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = data.swift; sourceTree = "<group>"; };
 		5D343B6D2BB1703400A3ED1A /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		5D343B6F2BB171DC00A3ED1A /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
+		5DB11F8F2BCC3A5500594197 /* SupabaseConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupabaseConfig.swift; sourceTree = "<group>"; };
+		5DB11F922BCC3A9300594197 /* FormCategoriesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormCategoriesView.swift; sourceTree = "<group>"; };
+		5DB11F952BCCA58D00594197 /* SupabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseService.swift; sourceTree = "<group>"; };
 		5DB4CEFB2BA6E605007A7157 /* swift-adminpanel-multiplatform.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swift-adminpanel-multiplatform.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DB4CEFE2BA6E605007A7157 /* swift_adminpanel_multiplatformApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swift_adminpanel_multiplatformApp.swift; sourceTree = "<group>"; };
 		5DB4CF002BA6E605007A7157 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -122,6 +128,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5DB11F912BCC3A6700594197 /* config */ = {
+			isa = PBXGroup;
+			children = (
+				5DB11F8F2BCC3A5500594197 /* SupabaseConfig.swift */,
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
+		5DB11F942BCCA57500594197 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				5DB11F952BCCA58D00594197 /* SupabaseService.swift */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
 		5DB4CEF22BA6E605007A7157 = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +167,8 @@
 		5DB4CEFD2BA6E605007A7157 /* swift-adminpanel-multiplatform */ = {
 			isa = PBXGroup;
 			children = (
+				5DB11F942BCCA57500594197 /* services */,
+				5DB11F912BCC3A6700594197 /* config */,
 				5DEF47E82BA9855800BDF9BE /* enums */,
 				5DB4CF432BA6E8AB007A7157 /* data */,
 				5DB4CF2F2BA6E64F007A7157 /* components */,
@@ -313,6 +337,7 @@
 		5DEF47EE2BA9872D00BDF9BE /* categories */ = {
 			isa = PBXGroup;
 			children = (
+				5DB11F922BCC3A9300594197 /* FormCategoriesView.swift */,
 				5DEF47EF2BA9874400BDF9BE /* CategoriesView.swift */,
 			);
 			path = categories;
@@ -462,14 +487,17 @@
 				5DEF47F62BA9878B00BDF9BE /* MotorizedView.swift in Sources */,
 				5DEF47EA2BA9856E00BDF9BE /* EnumOptionsSideBar.swift in Sources */,
 				5DB4CF012BA6E605007A7157 /* ContentView.swift in Sources */,
+				5DB11F902BCC3A5500594197 /* SupabaseConfig.swift in Sources */,
 				5DB4CF312BA6E665007A7157 /* Product.swift in Sources */,
 				5DB4CF032BA6E605007A7157 /* Item.swift in Sources */,
 				5DEF47F82BA98AC800BDF9BE /* Category.swift in Sources */,
+				5DB11F932BCC3A9300594197 /* FormCategoriesView.swift in Sources */,
 				5DB4CEFF2BA6E605007A7157 /* swift_adminpanel_multiplatformApp.swift in Sources */,
 				5DB4CF3C2BA6E783007A7157 /* CustomButton.swift in Sources */,
 				5DB4CF362BA6E6AB007A7157 /* ProductsView.swift in Sources */,
 				5DB4CF452BA6E8BC007A7157 /* MenuData.swift in Sources */,
 				5DEF47F02BA9874400BDF9BE /* CategoriesView.swift in Sources */,
+				5DB11F962BCCA58D00594197 /* SupabaseService.swift in Sources */,
 				5DB4CF382BA6E6C1007A7157 /* SplashView.swift in Sources */,
 				5DB4CF3A2BA6E6E4007A7157 /* LoginView.swift in Sources */,
 				5D343B702BB171DC00A3ED1A /* CategoriesViewModel.swift in Sources */,

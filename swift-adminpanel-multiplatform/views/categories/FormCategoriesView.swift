@@ -16,6 +16,11 @@ struct FormCategoriesView: View {
     @Binding var isShowForm: Bool
     var body: some View {
             VStack(alignment: .leading){
+                Image(systemName: "xmark.circle")
+                    .frame(width:30,height: 30)
+                    .onTapGesture {
+                        isShowForm = false
+                    }
                 Text("Crear categoría")
                     .font(.title)
                 

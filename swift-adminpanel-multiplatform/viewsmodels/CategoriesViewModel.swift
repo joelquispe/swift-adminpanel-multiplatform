@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import Supabase
 class CategoriesViewModel : ObservableObject{
     
     
@@ -23,10 +23,24 @@ class CategoriesViewModel : ObservableObject{
         }
     }
     
+    func upload(fileName:String,fileData: Data)async throws{
+        try await SupabaseConfig.client.storage
+          .from("adminPanel")
+          .upload(
+            path: "public/\(fileName)",
+            file: fileData,
+            options: FileOptions(
+              cacheControl: "3600",
+              contentType: "image/png",
+              upsert: false
+            )
+          )
+    }
+    
     func create(category: Category) async throws{
         var id = 1
         if(!self.categories.isEmpty){
-            id = self.categories.first!.id + 1
+            id = self.categories.last!.id + 1
         }
         let newCategory = Category(id: id, name: category.name, image: category.image)
         try await SupabaseConfig.client.database.from("categories").insert(newCategory).execute()

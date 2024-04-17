@@ -16,36 +16,81 @@ struct CategoriesView: View {
     @State var isShowForm = false
     @State var isShowImportes = false
     @State var isShowPermissionsAlert = false
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    
+    #if os(iOS)
+    var isCompact : Bool {
+        horizontalSizeClass == .compact
+    }
+    #else
+    var isCompact = false
+    #endif
+  
+    var supabaseService = SupabaseService()
     var body: some View {
         VStack{
-            Table(self.categoriesVM.categories, columns: {
-                TableColumn("Id",value: \.idString)
-                TableColumn("Nombre", value: \.name)
-                TableColumn("Imagen",value: \.image)
-                
-            })
-                .navigationTitle("Categorias")
-                .toolbar(content: {
-                    ToolbarItem {
-                        Text("Crear")
-                            .onTapGesture {
-                                isShowForm = true
-                            }
-                    }
-                })
-                .sheet(isPresented: $isShowForm, content: {
-                    FormCategoriesView(isShowForm: $isShowForm)
-                })
-                .onAppear() {
+            Button {
+               
                     Task{
                         do{
-                            try await self.categoriesVM.getAll()
+                            try await supabaseService.createBucket();
                         }catch{
                             print(error)
+                        }
+                    }
+                
+                
+                
+            } label: {
+                Text("Create bucket")
+            }
+
+            if(isCompact){
+                
+                List{
+                    ForEach(self.categoriesVM.categories,id: \.idString){
+                        item in
+                        HStack{
+                        Image(systemName: "truck.box.fill")
+                            Spacer().frame(width: 15)
+                            Text(item.name)
+                                .foregroundStyle(.black)
+                                .padding()
                         }
                         
                     }
                 }
+            }else{
+                Table(self.categoriesVM.categories, columns: {
+                    TableColumn("Id",value: \.idString)
+                    TableColumn("Nombre", value: \.name)
+                    TableColumn("Imagen",value: \.image)
+                    
+                })
+                    .navigationTitle("Categorias")
+                    .toolbar(content: {
+                        ToolbarItem {
+                            Text("Crear")
+                                .onTapGesture {
+                                    isShowForm = true
+                                }
+                        }
+                    })
+                    .sheet(isPresented: $isShowForm, content: {
+                        FormCategoriesView(isShowForm: $isShowForm)
+                    })
+                    
+            }
+        }
+        .navigationTitle("Categorías")
+        .onAppear() {
+            Task{
+                do{
+                    try await self.categoriesVM.getAll()
+                }catch{
+                    print(error)
+                }
+            }
         }
     }
 }
