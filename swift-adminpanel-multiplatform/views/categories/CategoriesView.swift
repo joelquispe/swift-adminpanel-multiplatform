@@ -30,21 +30,16 @@ struct CategoriesView: View {
     var body: some View {
         VStack{
             Button {
-               
                     Task{
                         do{
-                            try await supabaseService.createBucket();
+                            let result = try await supabaseService.createBucket();
                         }catch{
                             print(error)
                         }
                     }
-                
-                
-                
             } label: {
                 Text("Create bucket")
             }
-
             if(isCompact){
                 
                 List{
@@ -67,22 +62,22 @@ struct CategoriesView: View {
                     TableColumn("Imagen",value: \.image)
                     
                 })
-                    .navigationTitle("Categorias")
-                    .toolbar(content: {
-                        ToolbarItem {
-                            Text("Crear")
-                                .onTapGesture {
-                                    isShowForm = true
-                                }
-                        }
-                    })
-                    .sheet(isPresented: $isShowForm, content: {
-                        FormCategoriesView(isShowForm: $isShowForm)
-                    })
+                    
                     
             }
         }
         .navigationTitle("Categorías")
+        .toolbar{
+            ToolbarItem {
+                Text("Crear")
+                    .onTapGesture {
+                        isShowForm = true
+                    }
+            }
+        }
+        .sheet(isPresented: $isShowForm, content: {
+            FormCategoriesView(isShowForm: $isShowForm)
+        })
         .onAppear() {
             Task{
                 do{
@@ -92,6 +87,7 @@ struct CategoriesView: View {
                 }
             }
         }
+        .environmentObject(self.categoriesVM)
     }
 }
 

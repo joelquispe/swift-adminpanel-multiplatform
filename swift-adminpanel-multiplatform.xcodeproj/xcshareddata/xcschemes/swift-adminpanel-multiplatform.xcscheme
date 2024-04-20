@@ -84,6 +84,11 @@
             value = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2bWpka3h2a3p5aml5cWVlbG1zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTE0NDY0NjAsImV4cCI6MjAyNzAyMjQ2MH0.TlHhlbuWBbMo8dxC61ED2fiONgYOx98bpQI2UKL_Z8c"
             isEnabled = "YES">
          </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "SUPABASE_BUCKET"
+            value = "admin_panel_multiplatform"
+            isEnabled = "YES">
+         </EnvironmentVariable>
       </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction

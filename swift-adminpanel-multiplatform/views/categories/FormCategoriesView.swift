@@ -8,9 +8,11 @@
 import SwiftUI
 import PhotosUI
 struct FormCategoriesView: View {
-    @StateObject private var categoriesVM = CategoriesViewModel()
+    @EnvironmentObject() var categoriesVM: CategoriesViewModel
+    
     @State var photosPicker : PhotosPickerItem?
     @State var image: Image?
+    @State var categoryImage: Data?
     @State private var tfName = ""
     @State private var tfImage = ""
     @Binding var isShowForm: Bool
@@ -36,25 +38,21 @@ struct FormCategoriesView: View {
                                 Text("Subir foto")
                             }
                             
-                            if self.image != nil{
-                                self.image!
-                                    .resizable()
-                                    .frame(width: 100,height:100)
-                            }else{
-                                Text("")
+                            if let categoryImage = self.categoryImage{
+                                showImageCategory(image: categoryImage)
                             }
-                            TextField(text: $tfImage) {
-                                Text("Imagen")
-                            }
-                            .textFieldStyle(.roundedBorder)
                         }
-                        
                         Group {
                             Button(action: {
-                                let newCategory = Category(id: 1, name: tfName, image: tfImage)
                                 Task{
+                                    let currentDate = Date.now
+                                    let fileName = String(currentDate.timeIntervalSinceNow)
+                                    let newCategory = Category(id: 1, name: tfName, image: fileName )
+                                   
                                     do{
+                                        try await self.categoriesVM.upload(fileName: fileName, fileData: self.categoryImage!)
                                         try await self.categoriesVM.create(category: newCategory)
+                                        print("create category")
                                     }catch{
                                         print(error)
                                     }
@@ -77,15 +75,28 @@ struct FormCategoriesView: View {
             .frame(width: 400)
             .onChange(of: photosPicker) {
                 Task{
-                    if let loaded = try? await photosPicker?.loadTransferable(type: Image.self){
-                        self.image = loaded
-                                //self.uploadFile()
-                    }else{
+                    if let loaded = try? await photosPicker?.loadTransferable(type: Data.self){
+                        self.categoryImage = loaded
+                    }
+                   else{
                        print("error al convertir en imagen")
                     }
                 }
                 
             }
+    }
+    
+    @ViewBuilder
+    func showImageCategory(image:Data) -> some View{
+        #if os(iOS)
+        Image(uiImage: UIImage(data: image)!)
+            .resizable()
+            .frame(width: 100,height: 100)
+        #else
+        Image(nsImage: NSImage(data: image)!)
+            .resizable()
+            .frame(width: 100,height: 100)
+        #endif
     }
 }
 

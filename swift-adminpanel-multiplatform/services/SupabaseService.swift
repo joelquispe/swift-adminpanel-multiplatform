@@ -8,21 +8,24 @@
 import Foundation
 import Supabase
 class SupabaseService{
+    let bucketName = ProcessInfo.processInfo.environment["SUPABASE_BUCKET"]!
     
-    
-    func createBucket() async throws{
+    func createBucket() async throws -> Bool{
         do{
-            try await SupabaseConfig.client.storage
-               .getBucket("admin_panel_multiplatform")
+            let result = try await SupabaseConfig.client.storage
+                .getBucket(bucketName)
+            return false
+            
         }catch{
             try await SupabaseConfig.client.storage
               .createBucket(
-                "admin_panel_multiplatform",
+                bucketName,
                 options: BucketOptions(
                   public: true,
                   fileSizeLimit: 1024, allowedMimeTypes: ["image/png"]
                 )
               )
+            return true
         }
         
     }
