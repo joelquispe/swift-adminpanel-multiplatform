@@ -13,4 +13,5 @@ enum EnumOptionsSidebar{
     case BANNERS
     case CUSTOMERS
     case MOTORIZED
+    case ORDERS
 }

@@ -7,10 +7,11 @@
 
 import Foundation
 
-struct Category: Identifiable,Codable, Hashable{
+struct Category: Identifiable, Codable{
     let id: Int
     let name: String
-    let image : String
+    var urlImage : String?
+    var image: String
     
     var idString: String {
         return String(id)
@@ -20,4 +21,5 @@ struct Category: Identifiable,Codable, Hashable{
         case name = "name"
         case image = "image"
     }
+    
 }

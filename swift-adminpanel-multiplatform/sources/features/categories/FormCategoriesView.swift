@@ -46,7 +46,7 @@ struct FormCategoriesView: View {
                             Button(action: {
                                 Task{
                                     let currentDate = Date.now
-                                    let fileName = String(currentDate.timeIntervalSinceNow)
+                                    let fileName = String(currentDate.timeIntervalSince1970)
                                     let newCategory = Category(id: 1, name: tfName, image: fileName )
                                    
                                     do{

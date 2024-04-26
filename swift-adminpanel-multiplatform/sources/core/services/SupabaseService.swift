@@ -12,7 +12,7 @@ class SupabaseService{
     
     func createBucket() async throws -> Bool{
         do{
-            let result = try await SupabaseConfig.client.storage
+            _ = try await SupabaseConfig.client.storage
                 .getBucket(bucketName)
             return false
             
@@ -28,5 +28,18 @@ class SupabaseService{
             return true
         }
         
+    }
+    
+    func generateSignedUrl(path:String,fileName: String) async throws -> String {
+        let signedURL = try await SupabaseConfig.client.storage
+          .from(bucketName)
+          .createSignedURL(path: "public/\(path)/\(fileName)", expiresIn: 120)
+        return signedURL.absoluteString
+    }
+    
+    func deleteFile(path:String, fileName:String)async throws{
+        let _ = try await SupabaseConfig.client.storage
+          .from(bucketName)
+          .remove(paths: ["public/\(path)/\(fileName)"])
     }
 }

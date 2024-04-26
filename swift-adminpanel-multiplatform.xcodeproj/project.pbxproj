@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D343B6C2BB16FB200A3ED1A /* data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D343B6B2BB16FB200A3ED1A /* data.swift */; };
+		5D0E4FE02BDB9916005C2357 /* OrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0E4FDF2BDB9916005C2357 /* OrdersView.swift */; };
 		5D343B6E2BB1703400A3ED1A /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D343B6D2BB1703400A3ED1A /* Banner.swift */; };
 		5D343B702BB171DC00A3ED1A /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D343B6F2BB171DC00A3ED1A /* CategoriesViewModel.swift */; };
 		5D343B732BB1732200A3ED1A /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = 5D343B722BB1732200A3ED1A /* Auth */; };
@@ -62,7 +62,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5D343B6B2BB16FB200A3ED1A /* data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = data.swift; sourceTree = "<group>"; };
+		5D0E4FDF2BDB9916005C2357 /* OrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersView.swift; sourceTree = "<group>"; };
 		5D343B6D2BB1703400A3ED1A /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		5D343B6F2BB171DC00A3ED1A /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
 		5DB11F8F2BCC3A5500594197 /* SupabaseConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupabaseConfig.swift; sourceTree = "<group>"; };
@@ -128,6 +128,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D0E4FD82BDB9464005C2357 /* sources */ = {
+			isa = PBXGroup;
+			children = (
+				5D0E4FDC2BDB9571005C2357 /* features */,
+				5D0E4FDB2BDB9500005C2357 /* ui */,
+				5D0E4FDA2BDB94EC005C2357 /* common */,
+				5D0E4FD92BDB94E1005C2357 /* core */,
+				5DB11F912BCC3A6700594197 /* config */,
+			);
+			path = sources;
+			sourceTree = "<group>";
+		};
+		5D0E4FD92BDB94E1005C2357 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				5DB4CF2E2BA6E641007A7157 /* models */,
+				5DB11F942BCCA57500594197 /* services */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
+		5D0E4FDA2BDB94EC005C2357 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				5DEF47E82BA9855800BDF9BE /* enums */,
+				5DB4CF432BA6E8AB007A7157 /* data */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		5D0E4FDB2BDB9500005C2357 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				5DB4CF2B2BA6E626007A7157 /* layouts */,
+				5DB4CF2F2BA6E64F007A7157 /* components */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		5D0E4FDC2BDB9571005C2357 /* features */ = {
+			isa = PBXGroup;
+			children = (
+				5D0E4FDE2BDB9907005C2357 /* orders */,
+				5DEF47EE2BA9872D00BDF9BE /* categories */,
+				5DEF47ED2BA9871B00BDF9BE /* banners */,
+				5DEF47EC2BA9871400BDF9BE /* customers */,
+				5DEF47EB2BA986FE00BDF9BE /* motorized */,
+				5DEF47E52BA9850200BDF9BE /* sidebar */,
+				5DB4CF342BA6E68E007A7157 /* products */,
+				5DB4CF332BA6E683007A7157 /* splash */,
+				5DB4CF322BA6E67C007A7157 /* login */,
+			);
+			path = features;
+			sourceTree = "<group>";
+		};
+		5D0E4FDD2BDB959C005C2357 /* viewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5D343B6F2BB171DC00A3ED1A /* CategoriesViewModel.swift */,
+			);
+			path = viewModels;
+			sourceTree = "<group>";
+		};
+		5D0E4FDE2BDB9907005C2357 /* orders */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = orders;
+			sourceTree = "<group>";
+		};
 		5DB11F912BCC3A6700594197 /* config */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,15 +237,7 @@
 		5DB4CEFD2BA6E605007A7157 /* swift-adminpanel-multiplatform */ = {
 			isa = PBXGroup;
 			children = (
-				5DB11F942BCCA57500594197 /* services */,
-				5DB11F912BCC3A6700594197 /* config */,
-				5DEF47E82BA9855800BDF9BE /* enums */,
-				5DB4CF432BA6E8AB007A7157 /* data */,
-				5DB4CF2F2BA6E64F007A7157 /* components */,
-				5DB4CF2E2BA6E641007A7157 /* models */,
-				5DB4CF2D2BA6E635007A7157 /* viewsmodels */,
-				5DB4CF2C2BA6E62F007A7157 /* views */,
-				5DB4CF2B2BA6E626007A7157 /* layouts */,
+				5D0E4FD82BDB9464005C2357 /* sources */,
 				5DB4CEFE2BA6E605007A7157 /* swift_adminpanel_multiplatformApp.swift */,
 				5DB4CF002BA6E605007A7157 /* ContentView.swift */,
 				5DB4CF022BA6E605007A7157 /* Item.swift */,
@@ -216,29 +278,6 @@
 			children = (
 			);
 			path = layouts;
-			sourceTree = "<group>";
-		};
-		5DB4CF2C2BA6E62F007A7157 /* views */ = {
-			isa = PBXGroup;
-			children = (
-				5DEF47EE2BA9872D00BDF9BE /* categories */,
-				5DEF47ED2BA9871B00BDF9BE /* banners */,
-				5DEF47EC2BA9871400BDF9BE /* customers */,
-				5DEF47EB2BA986FE00BDF9BE /* motorized */,
-				5DEF47E52BA9850200BDF9BE /* sidebar */,
-				5DB4CF342BA6E68E007A7157 /* products */,
-				5DB4CF332BA6E683007A7157 /* splash */,
-				5DB4CF322BA6E67C007A7157 /* login */,
-			);
-			path = views;
-			sourceTree = "<group>";
-		};
-		5DB4CF2D2BA6E635007A7157 /* viewsmodels */ = {
-			isa = PBXGroup;
-			children = (
-				5D343B6F2BB171DC00A3ED1A /* CategoriesViewModel.swift */,
-			);
-			path = viewsmodels;
 			sourceTree = "<group>";
 		};
 		5DB4CF2E2BA6E641007A7157 /* models */ = {
@@ -289,7 +328,6 @@
 			isa = PBXGroup;
 			children = (
 				5DB4CF442BA6E8BC007A7157 /* MenuData.swift */,
-				5D343B6B2BB16FB200A3ED1A /* data.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -337,8 +375,10 @@
 		5DEF47EE2BA9872D00BDF9BE /* categories */ = {
 			isa = PBXGroup;
 			children = (
+				5D0E4FDD2BDB959C005C2357 /* viewModels */,
 				5DB11F922BCC3A9300594197 /* FormCategoriesView.swift */,
 				5DEF47EF2BA9874400BDF9BE /* CategoriesView.swift */,
+				5D0E4FDF2BDB9916005C2357 /* OrdersView.swift */,
 			);
 			path = categories;
 			sourceTree = "<group>";
@@ -489,6 +529,7 @@
 				5DB4CF012BA6E605007A7157 /* ContentView.swift in Sources */,
 				5DB11F902BCC3A5500594197 /* SupabaseConfig.swift in Sources */,
 				5DB4CF312BA6E665007A7157 /* Product.swift in Sources */,
+				5D0E4FE02BDB9916005C2357 /* OrdersView.swift in Sources */,
 				5DB4CF032BA6E605007A7157 /* Item.swift in Sources */,
 				5DEF47F82BA98AC800BDF9BE /* Category.swift in Sources */,
 				5DB11F932BCC3A9300594197 /* FormCategoriesView.swift in Sources */,
@@ -506,7 +547,6 @@
 				5DB4CF422BA6E841007A7157 /* MenuItem.swift in Sources */,
 				5DEF47F42BA9877900BDF9BE /* CustomersView.swift in Sources */,
 				5D343B6E2BB1703400A3ED1A /* Banner.swift in Sources */,
-				5D343B6C2BB16FB200A3ED1A /* data.swift in Sources */,
 				5DEF47F22BA9875200BDF9BE /* BannersView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,7 +10,7 @@ import PhotosUI
 
 struct CategoriesView: View {
     @StateObject private var categoriesVM = CategoriesViewModel()
-    
+    private var supabaseService = SupabaseService()
     @State var tfName = ""
     @State var tfImage = ""
     @State var isShowForm = false
@@ -26,22 +26,9 @@ struct CategoriesView: View {
     var isCompact = false
     #endif
   
-    var supabaseService = SupabaseService()
     var body: some View {
         VStack{
-            Button {
-                    Task{
-                        do{
-                            let result = try await supabaseService.createBucket();
-                        }catch{
-                            print(error)
-                        }
-                    }
-            } label: {
-                Text("Create bucket")
-            }
             if(isCompact){
-                
                 List{
                     ForEach(self.categoriesVM.categories,id: \.idString){
                         item in
@@ -52,15 +39,50 @@ struct CategoriesView: View {
                                 .foregroundStyle(.black)
                                 .padding()
                         }
-                        
                     }
+                    .onDelete(perform: {
+                        indexSet in
+                        Task{
+                            do{
+                                try await self.categoriesVM.delete(indexSet)
+                            }catch{
+                                print("error")
+                            }
+                        }
+                    })
                 }
             }else{
                 Table(self.categoriesVM.categories, columns: {
                     TableColumn("Id",value: \.idString)
                     TableColumn("Nombre", value: \.name)
-                    TableColumn("Imagen",value: \.image)
-                    
+                    TableColumn("Imagen"){
+                        category in
+                        AsyncImage(url: URL(string: category.urlImage ?? "")
+                                   ,content: {image in image
+                                .resizable()
+                            .frame(width:70,height: 70)}
+                                   ,placeholder: {
+                            ProgressView()
+                        })
+                    }
+                    TableColumn("Acciones"){ category in
+                        HStack{
+                            Image(systemName: "pencil.line")   
+                            Spacer().frame(width: 20)
+//                            Image(systemName: "trash.fill")
+//                                .onTapGesture {
+//                                    Task{
+//                                        do{
+//                                            try await categoriesVM.delete(category.id)
+//                                            
+//                                        }catch{
+//                                            print(error)
+//                                            print("error al eliminar")
+//                                        }
+//                                    }
+//                                }
+                        }
+                    }
                 })
                     
                     

@@ -46,9 +46,6 @@ struct ProductsView: View {
                         Text("Imagen")
                     }
                 }
-                
-                
-                
                 TextField(text: $tfDescription, axis: .vertical, label: {
                     Text("Descripción")
                         .frame(width: 75,alignment: .leading)

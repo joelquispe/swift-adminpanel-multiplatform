@@ -35,7 +35,8 @@ struct SidebarView: View {
                     MotorizedView()
                 case .PRODUCTS:
                     ProductsView()
-               
+                case .ORDERS:
+                    OrdersView()
                 }
             }else{
                 Text("Seleccione una opción")
